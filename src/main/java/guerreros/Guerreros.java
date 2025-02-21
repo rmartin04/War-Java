@@ -39,7 +39,7 @@ public abstract class Guerreros {
 	}
 	@Override
 	public String toString() {
-		return "\n\tGuerreros nombre = " + nombre + "\ntipo = " + tipo + "\nfuerza = " + fuerza + "\nresistencia = " + resistencia;
+		return "Guerreros nombre = " + nombre + "\ntipo = " + tipo + "\nfuerza = " + fuerza + "\nresistencia = " + resistencia + "\n\n";
 				
 	}
 	
