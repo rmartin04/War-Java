@@ -69,7 +69,14 @@ public abstract class VehiculoGuerra implements Tripulable {
         return "VehiculoGuerra [vida=" + vida + ", nombre=" + nombre + ", tipo=" + tipo + ", fuerzaResistencia="
                 + fuerzaResistencia + ", guerreros=" + guerreros + "]";
     }
-
+    public void embarcarGuerreros(Guerreros guerrero) {
+		List<Guerreros> listaGuerreros = getGuerreros();
+	    listaGuerreros.add(guerrero);
+	    if(listaGuerreros.size() > 10) {
+        	System.out.println("El tanque esta lleno,no se pueden embarcar mas guerreros");
+	
+	
+	}
     
-    
+    }  
 }
