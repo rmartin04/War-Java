@@ -9,6 +9,12 @@ public class Humanos extends Guerreros {
 		this.raza = raza;
 	}
 
+
+	public Humanos(String nombre, String tipo, int fuerza, int resistencia) {
+		super(nombre, tipo, fuerza, resistencia);
+	}
+
+
 	public String getRaza() {
 		return raza;
 	}
@@ -17,10 +23,10 @@ public class Humanos extends Guerreros {
 		this.raza = raza;
 	}
 
-	@Override
-	public String toString() {
-		return "Humanos raza = " + raza ;
-	}
+//	@Override
+//	public String toString() {
+//		return "\nHumanos  "+ super.toString()+"\nraza = " + raza ;
+//	}
 	
 	
 

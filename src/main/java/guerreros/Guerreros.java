@@ -39,8 +39,13 @@ public abstract class Guerreros {
 	}
 	@Override
 	public String toString() {
-		return "Guerreros nombre = " + nombre + ", tipo = " + tipo + ", fuerza = " + fuerza + ", resistencia = " + resistencia;
+		return "\n\tGuerreros nombre = " + nombre + "\ntipo = " + tipo + "\nfuerza = " + fuerza + "\nresistencia = " + resistencia;
 				
+	}
+	
+	public void mostrarInfo() {
+		System.out.println("==============");
+		System.out.println(this.toString());
 	}
 	
 
