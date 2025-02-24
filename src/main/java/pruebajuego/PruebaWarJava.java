@@ -22,7 +22,7 @@ public class PruebaWarJava {
 
 		for (int i = 0; i < numGuerreros; i++) {
 
-			Guerreros guerrero = new Humanos("H" + (i + 1), "Humano", (int) (Math.random() * 10), 0);
+			Guerreros guerrero = new Humanos("Humano" + (i + 1), "Soldado", (int) (Math.random() * 10), 0,"");
 			int resis = 10 - (guerrero.getFuerza());
 			guerrero.setResistencia(resis);
 			guerreros.add(guerrero);
