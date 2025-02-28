@@ -1,11 +1,13 @@
 package guerreros;
 
+import excepciones.juego.war.FuerzaExcepcion;
+
 public class Alienigenas extends Guerreros {
 
 	String planeta;
 
-	public Alienigenas(String nombre, String tipo, int fuerza, int resistencia, String planeta) {
-		super(nombre, tipo, fuerza, resistencia);
+	public Alienigenas(String nombre, String tipo, String planeta) throws FuerzaExcepcion {
+		super(nombre, tipo);
 		this.planeta = planeta;
 	}
 
