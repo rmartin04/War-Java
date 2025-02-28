@@ -36,18 +36,6 @@ public class NaveDestructora extends VehiculoGuerra {
 	}
 
 	@Override
-	public int atacar() {
-		// TODO Auto-generated method stub
-		return this.atacar();
-	}
-
-	@Override
-	public int defender() {
-		// TODO Auto-generated method stub
-		return this.defender();
-	}
-
-	@Override
 	public void embarcarGuerreros(Guerreros guerrero) throws EmbarcarExcepcion {
 		if (guerrero.getTipo().equalsIgnoreCase("Humanos")) {
 			System.out.println("No se pueden embarcar humanos en la nave");

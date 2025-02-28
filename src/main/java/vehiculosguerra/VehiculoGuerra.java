@@ -81,13 +81,76 @@ public abstract class VehiculoGuerra implements Tripulable {
 				+ ", ataque=" + ataque + ", guerreros=" + guerreros + "]";
 	}
 
+	@Override
+	public int atacar() {
+		// Obtenemos la lista de guerreros
+		List<Guerreros> guerreros = getGuerreros();
+	
+		// 1. Componente de ataque del vehículo con random(0,1)
+		double factorVehiculo = Math.random(); // valor en [0,1)
+		double ataqueVehiculo = getAtaque() * factorVehiculo;
+	
+		// 2. Suma del ataque de los guerreros con random(0,0.5)
+		double factorGuerreros = Math.random() / 2; // valor en [0,0.5)
+		double ataqueTotalGuerreros = 0;
+	
+		for (Guerreros guerrero : guerreros) {
+			ataqueTotalGuerreros += guerrero.getFuerza();
+		}
+		ataqueTotalGuerreros *= factorGuerreros;
+	
+		// 3. Suma de ambos componentes
+		double ataqueTotal = ataqueVehiculo + ataqueTotalGuerreros;
+	
+		// Redondeamos para devolver un entero
+		return (int) Math.round(ataqueTotal);
+	}
+	
+	@Override
+	public int defender(int danioRecibido) {
+		// Obtenemos la lista de guerreros
+		List<Guerreros> guerreros = getGuerreros();
+	
+		// 1. Componente de defensa del vehículo con random(0,1)
+		double factorVehiculo = Math.random(); // valor en [0,1)
+		double defensaVehiculo = getResistencia() * factorVehiculo;
+	
+		// 2. Suma de la resistencia de los guerreros con random(0,0.5)
+		double factorGuerreros = Math.random() / 2; // valor en [0,0.5)
+		double defensaTotalGuerreros = 0;
+	
+		for (Guerreros guerrero : guerreros) {
+			defensaTotalGuerreros += guerrero.getResistencia();
+		}
+		defensaTotalGuerreros *= factorGuerreros;
+	
+		// 3. Suma de ambos valores de defensa
+		double defensaTotal = defensaVehiculo + defensaTotalGuerreros;
+	
+		// Calculamos el daño final y actualizamos la vida del tanque
+		double danioFinal = danioRecibido - defensaTotal;
+		if (danioFinal < 0) {
+			danioFinal = 0;
+		}
+	
+		double nuevaVida = getVida() - danioFinal;
+		setVida((int) Math.round(nuevaVida));
+	
+		// Retorna la defensa efectuada (o podrías retornar la nueva vida, según prefieras)
+		return (int) Math.round(defensaTotal);
+	}
+	
 	public void embarcarGuerreros(Guerreros guerrero) throws EmbarcarExcepcion {
+		if (guerrero.getTipo().equalsIgnoreCase("Alienigenas")) {
+			System.out.println("No se pueden embarcar alienigenas en el tanque");
+			return;
+		}
 		List<Guerreros> listaGuerreros = getGuerreros();
 		listaGuerreros.add(guerrero);
 		if (listaGuerreros.size() > 10) {
-			throw new EmbarcarExcepcion("No pueden embarcar más de 10 guerreros");
+			throw new EmbarcarExcepcion("No se pueden embarcar más de 10 guerreros en el tanque");
 
 		}
-
 	}
+
 }
