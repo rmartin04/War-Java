@@ -3,18 +3,24 @@
     <encoder>
       <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
     </encoder>
+      <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
   </appender>
 
 
 <!-- Configuración para escribir en un fichero -->
   <appender name="FILE" class="ch.qos.logback.core.FileAppender">
     <!-- Ruta y nombre del fichero de logs. Es relativo al directorio de trabajo -->
-    <file>logs/app.log</file>
+    <file>logs/errors.log</file>
     <!-- Si el fichero ya existe, se añadirán nuevos logs al final -->
     <append>true</append>
     <encoder>
       <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
     </encoder>
+     <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
   </appender>
 
   <root level="info">
