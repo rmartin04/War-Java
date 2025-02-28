@@ -9,34 +9,30 @@ import guerreros.Humanos;
 
 public class PruebaWarJava {
 
-	public static void main(String[] args)  {
+	public static void main(String[] args) {
 
 		PruebaWarJava prueba = new PruebaWarJava();
-		try {
-		List<Guerreros> guerrero  = prueba.crearGuerreros(10);
-		
-			
-		} catch (FuerzaExcepcion error) {
-			
-			error.getMessage();
-		}
-		
+
+		List<Guerreros> guerrero = prueba.crearGuerreros(10);
 
 	}
 
-	private List<Guerreros> crearGuerreros(int numGuerreros) throws FuerzaExcepcion {
-
+	private List<Guerreros> crearGuerreros(int numGuerreros) {
 		List<Guerreros> guerreros = new ArrayList<>();
+		try {
 
-		for (int i = 0; i < numGuerreros; i++) {
+			for (int i = 0; i < numGuerreros; i++) {
+				Guerreros guerrero = new Humanos("Humano" + (i + 1), "Soldado");
+				guerreros.add(guerrero);
 
-			Guerreros guerrero = new Humanos("Humano" + (i + 1), "Soldado");
-			int resis = 10 - (guerrero.getFuerza());
-			guerrero.setResistencia(resis);
-			guerreros.add(guerrero);
-
+			}
+		} catch (FuerzaExcepcion error) {
+			// TODO Auto-generated catch block
+			error.getMessage();
 		}
-		return guerreros;
 
+//			int resis = 10 - (guerrero.getFuerza());
+//			guerrero.setResistencia(resis);
+		return guerreros;
 	}
 }
