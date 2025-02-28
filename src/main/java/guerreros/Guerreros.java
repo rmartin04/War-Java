@@ -1,17 +1,24 @@
 package guerreros;
 
+import excepciones.juego.war.FuerzaExcepcion;
+
 public abstract class Guerreros {
 
 	String nombre;
 	String tipo;
 	int fuerza;
 	int resistencia;
-	public Guerreros(String nombre, String tipo, int fuerza, int resistencia) {
+	public Guerreros(String nombre, String tipo) throws FuerzaExcepcion {
 		super();
+		if((fuerza+resistencia)>10) {
+			throw new FuerzaExcepcion("La suma de fuerza y resistencia no puede ser mayor de 10");
+			
+		}
+	
 		this.nombre = nombre;
 		this.tipo = tipo;
-		this.fuerza = fuerza;
-		this.resistencia = resistencia;
+		this.fuerza = (int) (Math.random() * 10);
+		this.resistencia = (int) (Math.random() * 10);
 	}
 	public String getNombre() {
 		return nombre;
