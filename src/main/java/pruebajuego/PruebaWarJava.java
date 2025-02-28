@@ -3,11 +3,16 @@ package pruebajuego;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import excepciones.juego.war.FuerzaExcepcion;
 import guerreros.Guerreros;
 import guerreros.Humanos;
 
 public class PruebaWarJava {
+	
+	  private static final Logger logger = LoggerFactory.getLogger(PruebaWarJava.class);
 
 	public static void main(String[] args) {
 
@@ -28,7 +33,7 @@ public class PruebaWarJava {
 			}
 		} catch (FuerzaExcepcion error) {
 			
-			error.getMessage();
+			 logger.info(error.getMessage());
 		}
 		return guerreros;
 	}
