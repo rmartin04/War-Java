@@ -2,13 +2,14 @@ package vehiculosguerra;
 
 import java.util.List;
 
+import excepciones.juego.war.EmbarcarExcepcion;
 import guerreros.Guerreros;
 
 public class Tanque extends VehiculoGuerra {
 	private int canones;
 
 	public Tanque(int vida, String nombre, String tipo, int fuerzaResistencia, List<Guerreros> guerreros, int canones) {
-		super(vida, nombre, tipo, fuerzaResistencia, guerreros);
+		super(vida, nombre, tipo, guerreros);
 		this.canones = canones;
 	}
 
@@ -35,7 +36,7 @@ public class Tanque extends VehiculoGuerra {
 	}
 
 	@Override
-	public void embarcarGuerreros(Guerreros guerrero) {
+	public void embarcarGuerreros(Guerreros guerrero) throws EmbarcarExcepcion {
 		if (guerrero.getTipo().equalsIgnoreCase("Alienigenas")) {
 			System.out.println("No se pueden embarcar alienigenas en el tanque");
 			return;
@@ -43,7 +44,7 @@ public class Tanque extends VehiculoGuerra {
 		List<Guerreros> listaGuerreros = getGuerreros();
 		listaGuerreros.add(guerrero);
 		if (listaGuerreros.size() > 10) {
-			System.out.println("El tanque esta lleno,no se pueden embarcar mas guerreros");
+			throw new EmbarcarExcepcion("No se pueden embarcar más de 10 guerreros en el tanque");
 
 		}
 	}

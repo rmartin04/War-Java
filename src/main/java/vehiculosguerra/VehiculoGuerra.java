@@ -12,15 +12,17 @@ public abstract class VehiculoGuerra implements Tripulable {
 	private int vida;
 	private String nombre;
 	private String tipo;
-	private int fuerzaResistencia;
+	private int resistencia;
+	private int ataque;
 	private List<Guerreros> guerreros;
 
 	// Constructores
-	public VehiculoGuerra(int vida, String nombre, String tipo, int fuerzaResistencia, List<Guerreros> guerreros) {
+	public VehiculoGuerra(int vida, String nombre, String tipo, List<Guerreros> guerreros) {
 		this.vida = vida;
 		this.nombre = nombre;
 		this.tipo = tipo;
-		this.fuerzaResistencia = fuerzaResistencia;
+		this.resistencia = (int) (Math.random() * 10);
+		this.ataque = (int) (Math.random() * 10);
 		this.guerreros = guerreros;
 	}
 
@@ -49,12 +51,20 @@ public abstract class VehiculoGuerra implements Tripulable {
 		this.tipo = tipo;
 	}
 
-	public int getFuerzaResistencia() {
-		return fuerzaResistencia;
+	public int getResistencia() {
+		return resistencia;
 	}
 
-	public void setFuerzaResistencia(int fuerzaResistencia) {
-		this.fuerzaResistencia = fuerzaResistencia;
+	public void setResistencia(int resistencia) {
+		this.resistencia = resistencia;
+	}
+
+	public int getAtaque() {
+		return ataque;
+	}
+
+	public void setAtaque(int ataque) {
+		this.ataque = ataque;
 	}
 
 	public List<Guerreros> getGuerreros() {
@@ -64,11 +74,11 @@ public abstract class VehiculoGuerra implements Tripulable {
 	public void setGuerreros(List<Guerreros> guerreros) {
 		this.guerreros = guerreros;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "VehiculoGuerra [vida=" + vida + ", nombre=" + nombre + ", tipo=" + tipo + ", fuerzaResistencia="
-				+ fuerzaResistencia + ", guerreros=" + guerreros + "]";
+		return "VehiculoGuerra [vida=" + vida + ", nombre=" + nombre + ", tipo=" + tipo + ", resistencia=" + resistencia
+				+ ", ataque=" + ataque + ", guerreros=" + guerreros + "]";
 	}
 
 	public void embarcarGuerreros(Guerreros guerrero) throws EmbarcarExcepcion {

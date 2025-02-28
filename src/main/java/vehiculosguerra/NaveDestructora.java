@@ -2,6 +2,7 @@ package vehiculosguerra;
 
 import java.util.List;
 
+import excepciones.juego.war.EmbarcarExcepcion;
 import guerreros.Guerreros;
 
 public class NaveDestructora extends VehiculoGuerra {
@@ -12,12 +13,12 @@ public class NaveDestructora extends VehiculoGuerra {
 	// Constructores
 	public NaveDestructora(int vida, String nombre, String tipo, int fuerzaResistencia, List<Guerreros> guerreros,
 			double velocidad) {
-		super(vida, nombre, tipo, fuerzaResistencia, guerreros);
+		super(vida, nombre, tipo, guerreros);
 		this.velocidad = velocidad;
 	}
 
 	public NaveDestructora(int vida, String nombre, String tipo, int fuerzaResistencia, List<Guerreros> guerreros) {
-		super(vida, nombre, tipo, fuerzaResistencia, guerreros);
+		super(vida, nombre, tipo, guerreros);
 	}
 
 	// Getter Y Setters
@@ -47,7 +48,7 @@ public class NaveDestructora extends VehiculoGuerra {
 	}
 
 	@Override
-	public void embarcarGuerreros(Guerreros guerrero) {
+	public void embarcarGuerreros(Guerreros guerrero) throws EmbarcarExcepcion {
 		if (guerrero.getTipo().equalsIgnoreCase("Humanos")) {
 			System.out.println("No se pueden embarcar humanos en la nave");
 			return;
@@ -55,7 +56,7 @@ public class NaveDestructora extends VehiculoGuerra {
 		List<Guerreros> listaGuerreros = getGuerreros();
 		listaGuerreros.add(guerrero);
 		if (listaGuerreros.size() > 10) {
-			System.out.println("El tanque esta lleno,no se pueden embarcar mas guerreros");
+			throw new EmbarcarExcepcion("No puede haber más de 10 guerreros por nave");
 
 		}
 	}

@@ -14,7 +14,8 @@ public class PruebaWarJava {
 		PruebaWarJava prueba = new PruebaWarJava();
 
 		List<Guerreros> guerrero = prueba.crearGuerreros(10);
-
+	
+		
 	}
 
 	private List<Guerreros> crearGuerreros(int numGuerreros) {
