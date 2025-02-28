@@ -1,6 +1,7 @@
 package vehiculosguerra;
 
 import java.util.List;
+import java.util.Random;
 
 import excepciones.juego.war.EmbarcarExcepcion;
 import guerreros.Guerreros;
@@ -24,9 +25,25 @@ public class Tanque extends VehiculoGuerra {
 	}
 
 	@Override
-	public int atacar() {
-		// TODO Auto-generated method stub
-		return this.atacar();
+	public int atacar(int ataque, List<Guerreros> guerreros) {
+        Random random = new Random();
+
+        // Generar un valor aleatorio para el ataque del vehículo entre 0 y 1
+        int ataqueVehiculoFinal = ataque * (random.nextInt());
+
+        // Calcular la suma de los ataques de los guerreros
+        int sumaAtaquesGuerreros = 0;
+        for (int ataque : guerreros) {
+            // Generar un valor aleatorio para cada ataque de guerrero entre 0 y 0.5
+            sumaAtaquesGuerreros += ataque * (random.nextDouble() * 0.5);
+        }
+
+        // Sumar ambos valores
+        int ataqueTotal = ataqueVehiculoFinal + sumaAtaquesGuerreros;
+
+        return ataqueTotal;
+
+		
 	}
 
 	@Override

@@ -43,7 +43,7 @@ public class Humanos extends Guerreros {
 			int resis = 10 - (guerrero.getFuerza());
 			guerrero.setResistencia(resis);
 			guerreros.add(guerrero);
-
+			
 		}
 		return guerreros;
 
