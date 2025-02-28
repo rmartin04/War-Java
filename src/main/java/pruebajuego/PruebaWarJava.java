@@ -21,19 +21,15 @@ public class PruebaWarJava {
 	private List<Guerreros> crearGuerreros(int numGuerreros) {
 		List<Guerreros> guerreros = new ArrayList<>();
 		try {
-
 			for (int i = 0; i < numGuerreros; i++) {
 				Guerreros guerrero = new Humanos("Humano" + (i + 1), "Soldado");
 				guerreros.add(guerrero);
 
 			}
 		} catch (FuerzaExcepcion error) {
-			// TODO Auto-generated catch block
+			
 			error.getMessage();
 		}
-
-//			int resis = 10 - (guerrero.getFuerza());
-//			guerrero.setResistencia(resis);
 		return guerreros;
 	}
 }
