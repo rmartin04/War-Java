@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import excepciones.juego.war.FuerzaExcepcion;
 import guerreros.Guerreros;
 import guerreros.Humanos;
+import vehiculosguerra.Tanque;
 
 public class PruebaWarJava {
 	
@@ -18,7 +19,8 @@ public class PruebaWarJava {
 
 		PruebaWarJava prueba = new PruebaWarJava();
 
-		List<Guerreros> guerrero = prueba.crearGuerreros(10);
+		List<Guerreros> guerrero = prueba.crearGuerreros(11);
+		prueba.crearTanque(guerrero);
 	
 		
 	}
@@ -36,5 +38,16 @@ public class PruebaWarJava {
 			 logger.info(error.getMessage());
 		}
 		return guerreros;
+	}
+	private Tanque crearTanque(List<Guerreros> guerreros) {
+		
+		Tanque tanque = new Tanque(1000, "Tanque","asalto", guerreros, 8);
+		
+		
+		
+		
+		return tanque;
+		
+		
 	}
 }

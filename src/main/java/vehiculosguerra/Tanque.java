@@ -6,7 +6,7 @@ import guerreros.Guerreros;
 public class Tanque extends VehiculoGuerra {
 	private int canones;
 
-	public Tanque(int vida, String nombre, String tipo, int fuerzaResistencia, List<Guerreros> guerreros, int canones) {
+	public Tanque(int vida, String nombre, String tipo, List<Guerreros> guerreros, int canones) {
 		super(vida, nombre, tipo, guerreros);
 		this.canones = canones;
 	}
