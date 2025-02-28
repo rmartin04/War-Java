@@ -40,7 +40,10 @@ public abstract class Guerreros {
 	@Override
 	public String toString() {
 		return "Guerreros nombre = " + nombre + "\ntipo = " + tipo + "\nfuerza = " + fuerza + "\nresistencia = " + resistencia + "\n\n";
-				
+		StringBuilder sb = new StringBuilder();
+		sb.append("Nombre: ").append(nombre + "\n");
+		sb.append("Tipo: ").append(tipo + "\n");
+		sb.append("Fuerza: ").append(fuerza);		
 	}
 	
 	public void mostrarInfo() {
