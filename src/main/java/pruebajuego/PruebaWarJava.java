@@ -16,37 +16,39 @@ public class PruebaWarJava {
 
 	private static final Logger logger = LoggerFactory.getLogger(PruebaWarJava.class);
 
-	public static void main(String[] args)  {
+	public static void main(String[] args) {
 
 		PruebaWarJava prueba = new PruebaWarJava();
 		try {
-		List<Guerreros> listadoGuerreros = prueba.crearGuerreros(5);
-		prueba.ejecutarGuerreros(listadoGuerreros);
-		for (Guerreros guerreros : listadoGuerreros) {
-			System.out.println(guerreros);
-		}
-		}catch(FuerzaExcepcion error) {
+			List<Guerreros> listadoGuerreros = prueba.crearGuerreros(5);
+			prueba.ejecutarGuerreros(listadoGuerreros);
+			for (Guerreros guerreros : listadoGuerreros) {
+				System.out.println(guerreros);
+			}
+		} catch (FuerzaExcepcion error) {
 			logger.info(error.getMessage());
 		}
 
 	}
 
 	/**
-	 *metodo que crea una lista de guerreros, a partir de un numero de guerreros
+	 * metodo que crea una lista de guerreros, a partir de un numero de guerreros
+	 * 
 	 * @param numGuerreros
 	 * @return List<Guerreros> decuelve una lista de guerreros
 	 * @throws FuerzaExcepcion
-	 * lanza una excepcion si la fuerza mas la resistencia es mayor de 10
+	 *                         lanza una excepcion si la fuerza mas la resistencia
+	 *                         es mayor de 10
 	 */
 
 	private List<Guerreros> crearGuerreros(int numGuerreros) throws FuerzaExcepcion {
 
-			List<Guerreros> listadoGuerra = new ArrayList<>();
-			for (int i = 0; i < numGuerreros; i++) {
-				Guerreros guerrero = new Humanos("Humano" + (i + 1), "Soldado");
-				listadoGuerra.add(guerrero);
-			}
-			return listadoGuerra;
+		List<Guerreros> listadoGuerra = new ArrayList<>();
+		for (int i = 0; i < numGuerreros; i++) {
+			Guerreros guerrero = new Humanos("Humano" + (i + 1), "Soldado");
+			listadoGuerra.add(guerrero);
+		}
+		return listadoGuerra;
 	}
 
 	/**
@@ -62,7 +64,7 @@ public class PruebaWarJava {
 		}
 
 	}
-	
+
 	/**
 	 * metodo que crea un tanque a partir de una lista de guerreros
 	 * 

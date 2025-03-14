@@ -2,11 +2,16 @@ package vehiculosguerra;
 
 import java.util.List;
 
+import org.apache.logging.log4j.core.config.plugins.util.ResolverUtil.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import excepciones.juego.war.EmbarcarExcepcion;
 import guerreros.Guerreros;
 import interfazjuego.Tripulable;
 
 public abstract class VehiculoGuerra implements Tripulable {
+	private static final Logger logger = LoggerFactory.getLogger(VehiculoGuerra.class);
 
 	// Atributos
 	private int vida;
@@ -142,7 +147,7 @@ public abstract class VehiculoGuerra implements Tripulable {
 	
 	public void embarcarGuerreros(Guerreros guerrero) throws EmbarcarExcepcion {
 		if (guerrero.getTipo().equalsIgnoreCase("Alienigenas")) {
-			System.out.println("No se pueden embarcar alienigenas en el tanque");
+			logger.error("No se pueden embarcar alienigenas en el tanque");
 			return;
 		}
 		List<Guerreros> listaGuerreros = getGuerreros();
