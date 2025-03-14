@@ -17,18 +17,17 @@ public class PruebaWarJava {
 
 	private static final Logger logger = LoggerFactory.getLogger(PruebaWarJava.class);
 
-	public static void main(String[] args)  {
+	public static void main(String[] args) throws FuerzaExcepcion   {
 
 		PruebaWarJava prueba = new PruebaWarJava();
-		try {
-		List<Guerreros> listadoGuerreros = prueba.crearGuerreros(5);
+		List<Guerreros> listadoGuerreros = prueba.crearGuerreros(10);
+
 		prueba.ejecutarGuerreros(listadoGuerreros);
 		for (Guerreros guerreros : listadoGuerreros) {
 			System.out.println(guerreros);
 		}
-		}catch(FuerzaExcepcion error) {
-			logger.info(error.getMessage());
-		}
+		Tanque tanque = prueba.crearTanque(listadoGuerreros);
+		System.out.println(tanque);
 
 	}
 
