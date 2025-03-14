@@ -139,6 +139,13 @@ public abstract class VehiculoGuerra implements Tripulable {
 		// Retorna la defensa efectuada (o podrías retornar la nueva vida, según prefieras)
 		return (int) Math.round(defensaTotal);
 	}
+
+	/**
+	 * Metodo que embarca guerreros en el vehiculo
+	 * 
+	 * @param guerrero
+	 * @throws EmbarcarExcepcion
+	 */
 	
 	public void embarcarGuerreros(Guerreros guerrero) throws EmbarcarExcepcion {
 		if (guerrero.getTipo().equalsIgnoreCase("Alienigenas")) {
