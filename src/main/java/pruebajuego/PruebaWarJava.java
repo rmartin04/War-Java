@@ -31,6 +31,14 @@ public class PruebaWarJava {
 
 	}
 
+	/**
+	 *metodo que crea una lista de guerreros, a partir de un numero de guerreros
+	 * @param numGuerreros
+	 * @return List<Guerreros> decuelve una lista de guerreros
+	 * @throws FuerzaExcepcion
+	 * lanza una excepcion si la fuerza mas la resistencia es mayor de 10
+	 */
+
 	private List<Guerreros> crearGuerreros(int numGuerreros) throws FuerzaExcepcion {
 
 			List<Guerreros> listadoGuerra = new ArrayList<>();
@@ -41,7 +49,12 @@ public class PruebaWarJava {
 			return listadoGuerra;
 	}
 
-
+	/**
+	 * metodo que ejecuta una lista de guerreros
+	 * se utiliza para visualizar la lista de guerreros que se ha creado
+	 * 
+	 * @param listadoGuerreros
+	 */
 	private void ejecutarGuerreros(List<Guerreros> listadoGuerreros) {
 
 		for (Guerreros guerreros : listadoGuerreros) {
@@ -49,7 +62,13 @@ public class PruebaWarJava {
 		}
 
 	}
-
+	
+	/**
+	 * metodo que crea un tanque a partir de una lista de guerreros
+	 * 
+	 * @param guerreros
+	 * @return Tanque devuelve un tanque con una lista de guerreros
+	 */
 	private Tanque crearTanque(List<Guerreros> guerreros) {
 
 		Tanque tanque = new Tanque(1000, "Tanque", "asalto", guerreros, 8);
