@@ -4,21 +4,21 @@ import java.util.List;
 import guerreros.Guerreros;
 
 public class Tanque extends VehiculoGuerra {
-	private int canones;
+	private int caniones;
 
-	public Tanque(int vida, String nombre, String tipo, List<Guerreros> guerreros, int canones) {
+	public Tanque(int vida, String nombre, String tipo, List<Guerreros> guerreros, int caniones) {
 		super(vida, nombre, tipo, guerreros);
-		this.canones = canones;
+		this.caniones = caniones;
 	}
 
 	// G y S
 
-	public int getCanones() {
-		return canones;
+	public int getCaniones() {
+		return caniones;
 	}
 
-	public void setCanones(int canones) {
-		this.canones = canones;
+	public void setCaniones(int caniones) {
+		this.caniones = caniones;
 	}
 
 
