@@ -13,7 +13,7 @@ public abstract class Guerreros {
 		this.nombre = nombre;
 		this.tipo = tipo;
 		this.fuerza = (int) (Math.random() * 10);
-		this.resistencia = (int) (Math.random() * 10);
+		this.resistencia = 10 - fuerza;
 		if((fuerza+resistencia)>10) {
 			throw new FuerzaExcepcion("La suma de fuerza y resistencia no puede ser mayor de 10");
 			

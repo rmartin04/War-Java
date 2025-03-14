@@ -28,6 +28,12 @@ public class PruebaWarJava {
 		}
 		Tanque tanque = prueba.crearTanque(listadoGuerreros);
 		System.out.println(tanque);
+		try {
+			NaveDestructora nave = prueba.crearNave(listadoGuerreros);
+			System.out.println(nave);
+		} catch (EmbarcarExcepcion e) {
+			logger.error(e.getMessage());
+		}
 
 	}
 
