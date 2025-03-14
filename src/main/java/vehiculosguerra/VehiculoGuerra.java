@@ -26,7 +26,7 @@ public abstract class VehiculoGuerra implements Tripulable {
 		this.vida = vida;
 		this.nombre = nombre;
 		this.tipo = tipo;
-		this.resistencia = (int) (Math.random() * 10);
+		this.resistencia = 10 - ataque;
 		this.ataque = (int) (Math.random() * 10);
 		this.guerreros = guerreros;
 	}
@@ -144,6 +144,13 @@ public abstract class VehiculoGuerra implements Tripulable {
 		// Retorna la defensa efectuada (o podrías retornar la nueva vida, según prefieras)
 		return (int) Math.round(defensaTotal);
 	}
+
+	/**
+	 * Metodo que embarca guerreros en el vehiculo
+	 * 
+	 * @param guerrero
+	 * @throws EmbarcarExcepcion
+	 */
 	
 	public void embarcarGuerreros(Guerreros guerrero) throws EmbarcarExcepcion {
 		if (guerrero.getTipo().equalsIgnoreCase("Alienigenas")) {
