@@ -11,13 +11,13 @@ public class NaveDestructora extends VehiculoGuerra {
 	private double velocidad;
 
 	// Constructores
-	public NaveDestructora(int vida, String nombre, String tipo, int fuerzaResistencia, List<Guerreros> guerreros,
+	public NaveDestructora(int vida, String nombre, String tipo, List<Guerreros> guerreros,
 			double velocidad) {
 		super(vida, nombre, tipo, guerreros);
 		this.velocidad = velocidad;
 	}
 
-	public NaveDestructora(int vida, String nombre, String tipo, int fuerzaResistencia, List<Guerreros> guerreros) {
+	public NaveDestructora(int vida, String nombre, String tipo, List<Guerreros> guerreros) {
 		super(vida, nombre, tipo, guerreros);
 	}
 
@@ -41,12 +41,8 @@ public class NaveDestructora extends VehiculoGuerra {
 			System.out.println("No se pueden embarcar humanos en la nave");
 			return;
 		}
-		List<Guerreros> listaGuerreros = getGuerreros();
-		listaGuerreros.add(guerrero);
-		if (listaGuerreros.size() > 10) {
-			throw new EmbarcarExcepcion("No puede haber más de 10 guerreros por nave");
 
-		}
+		super.embarcarGuerreros(guerrero);
 	}
 
 }
