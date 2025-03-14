@@ -10,6 +10,7 @@ import excepciones.juego.war.EmbarcarExcepcion;
 import excepciones.juego.war.FuerzaExcepcion;
 import guerreros.Guerreros;
 import guerreros.Humanos;
+import vehiculosguerra.NaveDestructora;
 import vehiculosguerra.Tanque;
 
 public class PruebaWarJava {
@@ -76,4 +77,18 @@ public class PruebaWarJava {
 		return tanque;
 
 	}
+	/**
+	 * metodo que crea una nave a partir de una lista de guerreros
+	 * 
+	 * @param guerreros
+	 * @return
+	 * @throws EmbarcarExcepcion
+	 */
+	  private NaveDestructora crearNave(List<Guerreros> guerreros) throws EmbarcarExcepcion {
+	        if (guerreros.size() > 10) {
+	            throw new EmbarcarExcepcion("La nave no puede embarcar más de 10 guerreros.");
+	        }
+	        NaveDestructora nave = new NaveDestructora(10, "Nave de Guerra", null, 0, guerreros);
+	        return nave;
+	    }
 }
