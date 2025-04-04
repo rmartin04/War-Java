@@ -29,8 +29,8 @@ public abstract class VehiculoGuerra implements Tripulable {
 		this.vida = vida;
 		this.nombre = nombre;
 		this.tipo = tipo;
-		this.ataque = (int) (Math.random() * 10);
-		this.resistencia = 10 - ataque;
+		this.ataque = (int) (Math.random() * 20);
+		this.resistencia = 100 - ataque;
 		this.guerreros = guerreros;
 	}
 

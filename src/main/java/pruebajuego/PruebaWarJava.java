@@ -113,9 +113,11 @@ public class PruebaWarJava {
 			int danioTanque = tanque.atacar();
 			int defensaNave = naveAlienigena.defender(danioTanque);
 			
+			System.out.println("\nTurno " + tanque.getNombre());
 			if (danioTanque > defensaNave) {
 				naveAlienigena.setResistencia(naveAlienigena.getResistencia() - (danioTanque - defensaNave));
 				System.out.println("El " + tanque.getNombre() + " ha atacado y ha hecho " + (danioTanque - defensaNave) + " puntos de daño a la nave alienígena.");
+				System.out.println("Resistencia de " + naveAlienigena.getNombre() + " es de: " + naveAlienigena.getResistencia());
 			} else {
 				System.out.println("El " + tanque.getNombre() + " ha atacado pero la nave alienígena ha defendido todo el daño.");
 			}
@@ -126,6 +128,7 @@ public class PruebaWarJava {
 				break;
 			}
 	
+			System.out.println("\nTurno " + naveAlienigena.getNombre());
 			// Ahora la nave alienígena ataca
 			int danioNave = naveAlienigena.atacar();
 			int defensaTanque = tanque.defender(danioNave);
@@ -133,6 +136,7 @@ public class PruebaWarJava {
 			if (danioNave > defensaTanque) {
 				tanque.setResistencia(tanque.getResistencia() - (danioNave - defensaTanque));
 				System.out.println("La nave alienígena ha atacado y ha hecho " + (danioNave - defensaTanque) + " puntos de daño al tanque.");
+				System.out.println("Resistencia de " + tanque.getNombre() + " es de: " + tanque.getResistencia());
 			} else {
 				System.out.println("La nave alienígena ha atacado pero el tanque ha defendido todo el daño.");
 			}
