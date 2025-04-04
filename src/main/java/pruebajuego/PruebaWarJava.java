@@ -89,8 +89,8 @@ public class PruebaWarJava {
 	 * @param guerreros
 	 * @return Tanque devuelve un tanque con una lista de guerreros
 	 */
-	private Tanque crearTanque(List<Guerreros> alienigenas) {
-		if (alienigenas.size() > 10) {
+	private Tanque crearTanque(List<Guerreros> guerreros) {
+		if (guerreros.size() > 10) {
 
 		}
 		Tanque tanque = new Tanque(1000, "Tanque", "asalto", 8, guerreros);
