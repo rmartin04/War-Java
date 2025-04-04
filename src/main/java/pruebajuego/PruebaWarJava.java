@@ -29,8 +29,7 @@ public class PruebaWarJava {
 		"Vamos a simular una lucha entre el tanque y la nave destructora, para ello debes llamar al método simularLucha"
 		"Buena suerte en la batalla" 
 		*/
-		
-		prueba.crearTanqueUsuario(prueba.crearGuerreros(10));
+	
 
 		prueba.ejecutarGuerreros(10);
 	}
@@ -122,86 +121,43 @@ public class PruebaWarJava {
 	 * @param naveAlienigena
 	 */
 
-	public void simularLucha(Tanque tanque, NaveDestructora naveAlienigena) {
-	
+	 public void simularLucha(Tanque tanque, NaveDestructora naveAlienigena) {
 		while (tanque.getResistencia() > 0 && naveAlienigena.getResistencia() > 0) {
 			// El tanque ataca primero
 			int danioTanque = tanque.atacar();
 			int defensaNave = naveAlienigena.defender(danioTanque);
 			
-			System.out.println("\n***Turno " + tanque.getNombre() + "***");
+			System.out.println("\n***Turno " + tanque.getNombre() + " Ataca***");
 			if (danioTanque > defensaNave) {
 				naveAlienigena.setResistencia(naveAlienigena.getResistencia() - (danioTanque - defensaNave));
-				System.out.println("\tEl " + tanque.getNombre() + " ha atacado y ha hecho " + (danioTanque - defensaNave) + " puntos de daño a la nave alienígena.");
-
+				System.out.println("\tEl " + tanque.getNombre() + " ha hecho " + (danioTanque - defensaNave) + " puntos de daño a la nave alienígena.");
+	
 				// Verificamos si la nave alienígena ha caído
-				if (naveAlienigena.getResistencia() > 0) {
-					System.out.println("\tResistencia de " + naveAlienigena.getNombre() + " es de: " + naveAlienigena.getResistencia());
-				}else {
+				if (naveAlienigena.getResistencia() <= 0) {
 					System.out.println("\t¡La nave alienígena ha sido destruida! El tanque ha ganado.");
 					break;
 				}
 			} else {
 				System.out.println("\tEl " + tanque.getNombre() + " ha atacado pero la nave alienígena ha defendido todo el daño.");
 			}
-	
-	
-			System.out.println("\n***Turno " + tanque.getNombre() + "***");
+			
 			// Ahora la nave alienígena ataca
 			int danioNave = naveAlienigena.atacar();
 			int defensaTanque = tanque.defender(danioNave);
 			
+			System.out.println("\n***Turno " + naveAlienigena.getNombre() + " Ataca***");
 			if (danioNave > defensaTanque) {
 				tanque.setResistencia(tanque.getResistencia() - (danioNave - defensaTanque));
-				System.out.println("\tLa nave alienígena ha atacado y ha hecho " + (danioNave - defensaTanque) + " puntos de daño al tanque.");
+				System.out.println("\tLa nave alienígena ha hecho " + (danioNave - defensaTanque) + " puntos de daño al tanque.");
 				
-				if (tanque.getResistencia() > 0) {
-					System.out.println("\tResistencia de " + tanque.getNombre() + " es de: " + tanque.getResistencia());
-				}else {
-					System.out.println("\t¡La nave alienígena ha sido destruida! El tanque ha ganado.");
+				if (tanque.getResistencia() <= 0) {
+					System.out.println("\t¡El tanque ha sido destruido! La nave alienígena ha ganado.");
 					break;
 				}
 			} else {
 				System.out.println("\tLa nave alienígena ha atacado pero el tanque ha defendido todo el daño.");
 			}
-
 		}
-	}
-
-	/**
-	 * metodo que crea un tanque a partir de una lista de guerreros
-	 * 
-	 * @param guerreros
-	 * @return Tanque devuelve un tanque con una lista de guerreros
-	 */
-	private Tanque crearTanqueUsuario(List<Guerreros>humanos) {
-		
-		int vida = Utilidades.pideDatoNumerico("Vida del tanque: ");
-	    
-	    String nombre = Utilidades.pideDatoCadena("Nombre del tanque: ");
-	   
-	    String tipo = Utilidades.pideDatoCadena("Tipo del tanque: ");
-	 
-	    int caniones = Utilidades.pideDatoNumerico("Numero de cañones del tanque: ");
-	    
-
-	    return new Tanque(vida, nombre, tipo, caniones, humanos);
-	}
-
-	/**
-	 * metodo que crea una nave a partir de una lista de guerreros
-	 * 
-	 * @param guerreros
-	 * @return
-	 * @throws EmbarcarExcepcion
-	 */
-
-	private NaveDestructora crearNaveUsuario(List<Guerreros> alienigenas) {
-	    int vida = Utilidades.pideDatoNumerico("Vida de la nave: ");
-	    String nombre = Utilidades.pideDatoCadena("Nombre de la nave: ");
-	    String tipo = Utilidades.pideDatoCadena("Tipo de la nave: ");
-	    double velocidad  = Utilidades.pideDatoDouble("Velocidad de la nave: ");
-	    return new NaveDestructora(vida, nombre, tipo, alienigenas, velocidad);
 	}
 	
 }
