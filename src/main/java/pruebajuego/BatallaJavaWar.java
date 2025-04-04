@@ -15,13 +15,13 @@ import guerreros.Humanos;
 import vehiculosguerra.NaveDestructora;
 import vehiculosguerra.Tanque;
 
-public class PruebaWarJava {
+public class BatallaJavaWar {
 
-	private static final Logger logger = LoggerFactory.getLogger(PruebaWarJava.class);
+	private static final Logger logger = LoggerFactory.getLogger(BatallaJavaWar.class);
 
 	public static void main(String[] args) throws FuerzaExcepcion {
 
-		PruebaWarJava prueba = new PruebaWarJava();
+		BatallaJavaWar prueba = new BatallaJavaWar();
 		/* 
 		Bienvenido a la guerra de los mundos
 		"Vamos a crear una lista de guerreros, para ello debes llamar al método crearGuerreros, tanto alienígenas como humanos"

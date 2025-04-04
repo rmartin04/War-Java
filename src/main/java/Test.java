@@ -1,7 +1,7 @@
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import pruebajuego.PruebaWarJava;
+import pruebajuego.BatallaJavaWar;
 
 public class Test {
 	 private static final Logger logger = LoggerFactory.getLogger(Test.class);
