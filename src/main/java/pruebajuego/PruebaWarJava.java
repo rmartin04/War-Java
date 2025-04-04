@@ -105,7 +105,7 @@ public class PruebaWarJava {
 	 * @return
 	 * @throws EmbarcarExcepcion
 	 */
-	private NaveDestructora crearNave(List<Alienigenas> alienigenas) throws EmbarcarExcepcion {
+	private NaveDestructora crearNave(List<Guerreros> alienigenas) throws EmbarcarExcepcion {
 		if (alienigenas.size() > 10) {
 			throw new EmbarcarExcepcion("La nave no puede embarcar más de 10 guerreros.");
 		}
