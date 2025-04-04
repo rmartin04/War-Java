@@ -14,6 +14,7 @@ import guerreros.Guerreros;
 import guerreros.Humanos;
 import vehiculosguerra.NaveDestructora;
 import vehiculosguerra.Tanque;
+import vehiculosguerra.VehiculoGuerra;
 
 public class BatallaJavaWar {
 
@@ -121,21 +122,21 @@ public class BatallaJavaWar {
 	 * @param naveAlienigena
 	 */
 
-	 public void simularLucha(Tanque tanque, NaveDestructora naveAlienigena) {
+	 public void simularLucha(Tanque tanque, VehiculoGuerra barco) {
 		// Logger para simular la batalla
-		while (tanque.getResistencia() > 0 && naveAlienigena.getResistencia() > 0) {
+		while (tanque.getResistencia() > 0 && barco.getResistencia() > 0) {
 			// El tanque ataca primero
 			int danioTanque = tanque.atacar();
-			int defensaNave = naveAlienigena.defender(danioTanque);
+			int defensaNave = barco.defender(danioTanque);
 	
 			// Log para el ataque del tanque
 			logger.info("\n***Turno " + tanque.getNombre() + " Ataca***");
 			if (danioTanque > defensaNave) {
-				naveAlienigena.setResistencia(naveAlienigena.getResistencia() - (danioTanque - defensaNave));
+				barco.setResistencia(barco.getResistencia() - (danioTanque - defensaNave));
 				logger.info("\tEl " + tanque.getNombre() + " ha hecho " + (danioTanque - defensaNave) + " puntos de daño a la nave alienígena.");
 	
 				// Verificamos si la nave alienígena ha caído
-				if (naveAlienigena.getResistencia() <= 0) {
+				if (barco.getResistencia() <= 0) {
 					logger.info("\t¡La nave alienígena ha sido destruida! El tanque ha ganado.");
 					break;
 				}
@@ -144,11 +145,11 @@ public class BatallaJavaWar {
 			}
 	
 			// Ahora la nave alienígena ataca
-			int danioNave = naveAlienigena.atacar();
+			int danioNave = barco.atacar();
 			int defensaTanque = tanque.defender(danioNave);
 	
 			// Log para el ataque de la nave
-			logger.info("\n***Turno " + naveAlienigena.getNombre() + " Ataca***");
+			logger.info("\n***Turno " + barco.getNombre() + " Ataca***");
 			if (danioNave > defensaTanque) {
 				tanque.setResistencia(tanque.getResistencia() - (danioNave - defensaTanque));
 				logger.info("\tLa nave alienígena ha hecho " + (danioNave - defensaTanque) + " puntos de daño al tanque.");
