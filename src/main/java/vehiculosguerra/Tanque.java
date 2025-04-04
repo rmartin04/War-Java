@@ -24,6 +24,14 @@ public class Tanque extends VehiculoGuerra {
 	}
 
 	@Override
+	public String toString() {
+		super.toString();
+		StringBuilder sb = new StringBuilder();
+		sb.append("Cañones: ").append(caniones);
+		return sb.toString();
+	}
+	
+	@Override
 	public void embarcarGuerreros(Guerreros guerrero) throws EmbarcarExcepcion {
 		if (guerrero.getTipo().equalsIgnoreCase("Alienigenas")) {
 			System.out.println("No se pueden embarcar alienigenas en la nave");

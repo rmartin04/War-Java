@@ -22,22 +22,8 @@ public class PruebaWarJava {
 	public static void main(String[] args) throws FuerzaExcepcion {
 
 		PruebaWarJava prueba = new PruebaWarJava();
-		List<Guerreros> listadoGuerreros = prueba.crearGuerreros(10);
 
-		// prueba.ejecutarGuerreros(listadoGuerreros);
-
-		Tanque tanque = prueba.crearTanque(listadoGuerreros);
-		System.out.println(tanque);
-		NaveDestructora nave = null;
-		try {
-			 nave = prueba.crearNave(listadoGuerreros);
-			System.out.println(nave);
-		} catch (EmbarcarExcepcion e) {
-			logger.error(e.getMessage());
-		}
-		System.out.println("===================================\n");
-	    System.out.println( nave.toString());
-		prueba.simularLucha(tanque, nave);
+		prueba.ejecutarGuerreros(10);
 
 	}
 
@@ -47,15 +33,16 @@ public class PruebaWarJava {
 	 * 
 	 * @param listadoGuerreros
 	 */
-	private void ejecutarGuerreros(List<Guerreros> listadoGuerreros, int numGuerreros) {
+	private void ejecutarGuerreros(int numGuerreros) {
 		try {
-			crearGuerreros(numGuerreros);
-			crearAlienigenas(numGuerreros);
-			crearNave(listadoGuerreros);
+			List<Guerreros> listadoHumanos = crearGuerreros(numGuerreros);
+			List<Guerreros> listadoAlienigenas = crearAlienigenas(numGuerreros);
+			Tanque tanque = crearTanque(listadoHumanos);
+			NaveDestructora nave = crearNave(listadoAlienigenas);
+			simularLucha(tanque, nave);
 		} catch (Exception e) {
 			logger.error("Ha habido un error al ejecutar, revisa: ", e);
 		}
-
 	}
 
 	/**
@@ -94,9 +81,9 @@ public class PruebaWarJava {
 	 * @param guerreros
 	 * @return Tanque devuelve un tanque con una lista de guerreros
 	 */
-	private Tanque crearTanque(List<Guerreros> guerreros) {
+	private Tanque crearTanque(List<Guerreros> guerreros) throws EmbarcarExcepcion {
 		if (guerreros.size() > 10) {
-
+			throw new EmbarcarExcepcion("El tanque no puede embarcar más de 10 humanos");
 		}
 		Tanque tanque = new Tanque(1000, "Tanque", "asalto", 8, guerreros);
 		return tanque;
@@ -112,36 +99,38 @@ public class PruebaWarJava {
 	 */
 	private NaveDestructora crearNave(List<Guerreros> alienigenas) throws EmbarcarExcepcion {
 		if (alienigenas.size() > 10) {
-			throw new EmbarcarExcepcion("La nave no puede embarcar más de 10 guerreros.");
+			throw new EmbarcarExcepcion("La nave no puede embarcar más de 10 alienigenas.");
 		}
-		
+
 		NaveDestructora nave = new NaveDestructora(1000, "Nave de Guerra", "Acorazado", alienigenas);
 
 		return nave;
 	}
-	
-	 public void simularLucha(Tanque tanque, NaveDestructora naveAlienigena) {
-		    Random random = new Random();
 
-		    while (tanque.getResistencia() > 0 && naveAlienigena.getResistencia() > 0) {
-		        int ataqueTanque = random.nextInt(100) + tanque.getAtaque();
-		        int defensaNave = random.nextInt(100) + naveAlienigena.getResistencia();
+	public void simularLucha(Tanque tanque, NaveDestructora naveAlienigena) {
+		Random random = new Random();
 
-		        if (ataqueTanque > defensaNave) {
-		            naveAlienigena.setResistencia(naveAlienigena.getResistencia() - ataqueTanque);
-		            System.out.println("El tanque " + tanque.getNombre() + " ha atacado a la nave alienígena " + naveAlienigena.getNombre());
-		        } else {
-		            tanque.setResistencia(tanque.getResistencia() - defensaNave);
-		            System.out.println("La nave alienígena " + naveAlienigena.getNombre() + " ha atacado al tanque " + tanque.getNombre());
-		        }
-		    }
+		while (tanque.getResistencia() > 0 && naveAlienigena.getResistencia() > 0) {
+			int ataqueTanque = random.nextInt(100) + tanque.getAtaque();
+			int defensaNave = random.nextInt(100) + naveAlienigena.getResistencia();
 
-		    if (tanque.getResistencia() <= 0) {
-		        System.out.println("¡La nave alienígena ha ganado la batalla!");
-		    } else {
-		        System.out.println("¡El tanque ha ganado la batalla!");
-		    }
+			do {
+				if (ataqueTanque > defensaNave) {
+					naveAlienigena.setResistencia(naveAlienigena.getResistencia() - ataqueTanque);
+					System.out.println(
+							"El vehículo " + tanque.getNombre() + " ha atacado " + naveAlienigena.getNombre());
+				} else {
+					tanque.setResistencia(tanque.getResistencia() - defensaNave);
+					System.out
+							.println("La vehículo " + naveAlienigena.getNombre() + " ha atacado " + tanque.getNombre());
+				}
+			} while (tanque.getVida() != naveAlienigena.getVida());
+		}
+
+		if (tanque.getResistencia() <= 0) {
+			System.out.println("¡La nave alienígena ha ganado la batalla!");
+		} else {
+			System.out.println("¡El tanque ha ganado la batalla!");
 		}
 	}
-	
-
+}

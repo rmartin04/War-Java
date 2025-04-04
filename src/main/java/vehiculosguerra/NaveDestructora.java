@@ -32,7 +32,10 @@ public class NaveDestructora extends VehiculoGuerra {
 
 	@Override
 	public String toString() {
-		return "NaveDestructora velocidad=" + velocidad + "]";
+		super.toString();
+		StringBuilder sb = new StringBuilder();
+		sb.append("Velocidad Nave destructora: ").append(velocidad);
+		return sb.toString();
 	}
 
 	@Override
