@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 
 import excepciones.juego.war.EmbarcarExcepcion;
 import excepciones.juego.war.FuerzaExcepcion;
-import guerreros.Alienigenas;
 import guerreros.Guerreros;
 import guerreros.Humanos;
 import vehiculosguerra.NaveDestructora;
@@ -108,29 +107,42 @@ public class PruebaWarJava {
 	}
 
 	public void simularLucha(Tanque tanque, NaveDestructora naveAlienigena) {
-		Random random = new Random();
-
+	
 		while (tanque.getResistencia() > 0 && naveAlienigena.getResistencia() > 0) {
-			int ataqueTanque = random.nextInt(100) + tanque.getAtaque();
-			int defensaNave = random.nextInt(100) + naveAlienigena.getResistencia();
-
-			do {
-				if (ataqueTanque > defensaNave) {
-					naveAlienigena.setResistencia(naveAlienigena.getResistencia() - ataqueTanque);
-					System.out.println(
-							"El vehículo " + tanque.getNombre() + " ha atacado " + naveAlienigena.getNombre());
-				} else {
-					tanque.setResistencia(tanque.getResistencia() - defensaNave);
-					System.out
-							.println("La vehículo " + naveAlienigena.getNombre() + " ha atacado " + tanque.getNombre());
-				}
-			} while (tanque.getVida() != naveAlienigena.getVida());
-		}
-
-		if (tanque.getResistencia() <= 0) {
-			System.out.println("¡La nave alienígena ha ganado la batalla!");
-		} else {
-			System.out.println("¡El tanque ha ganado la batalla!");
+			// El tanque ataca primero
+			int danioTanque = tanque.atacar();
+			int defensaNave = naveAlienigena.defender(danioTanque);
+			
+			if (danioTanque > defensaNave) {
+				naveAlienigena.setResistencia(naveAlienigena.getResistencia() - (danioTanque - defensaNave));
+				System.out.println("El " + tanque.getNombre() + " ha atacado y ha hecho " + (danioTanque - defensaNave) + " puntos de daño a la nave alienígena.");
+			} else {
+				System.out.println("El " + tanque.getNombre() + " ha atacado pero la nave alienígena ha defendido todo el daño.");
+			}
+	
+			// Verificamos si la nave alienígena ha caído
+			if (naveAlienigena.getResistencia() <= 0) {
+				System.out.println("¡La nave alienígena ha sido destruida! El tanque ha ganado.");
+				break;
+			}
+	
+			// Ahora la nave alienígena ataca
+			int danioNave = naveAlienigena.atacar();
+			int defensaTanque = tanque.defender(danioNave);
+			
+			if (danioNave > defensaTanque) {
+				tanque.setResistencia(tanque.getResistencia() - (danioNave - defensaTanque));
+				System.out.println("La nave alienígena ha atacado y ha hecho " + (danioNave - defensaTanque) + " puntos de daño al tanque.");
+			} else {
+				System.out.println("La nave alienígena ha atacado pero el tanque ha defendido todo el daño.");
+			}
+	
+			// Verificamos si el tanque ha caído
+			if (tanque.getResistencia() <= 0) {
+				System.out.println("¡El tanque ha sido destruido! La nave alienígena ha ganado.");
+				break;
+			}
 		}
 	}
+	
 }
