@@ -22,9 +22,10 @@ public class PruebaWarJava {
 	public static void main(String[] args) throws FuerzaExcepcion {
 
 		PruebaWarJava prueba = new PruebaWarJava();
+		
+		prueba.crearTanqueUsuario(prueba.crearGuerreros(10));
 
 		prueba.ejecutarGuerreros(10);
-
 	}
 
 	/**
