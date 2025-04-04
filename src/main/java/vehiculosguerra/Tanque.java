@@ -19,10 +19,6 @@ public class Tanque extends VehiculoGuerra {
 		return caniones;
 	}
 
-	public void setCaniones(int caniones) {
-		this.caniones = caniones;
-	}
-
 	@Override
 	public String toString() {
 		super.toString();

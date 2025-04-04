@@ -47,41 +47,27 @@ public abstract class VehiculoGuerra implements Tripulable {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
 	public String getTipo() {
 		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
-	public int getResistencia() {
-		return resistencia;
 	}
 
 	public void setResistencia(int resistencia) {
 		this.resistencia = resistencia;
 	}
 
-	public int getAtaque() {
-		return ataque;
+	public int getResistencia() {
+		return resistencia;
 	}
 
-	public void setAtaque(int ataque) {
-		this.ataque = ataque;
+	public int getAtaque() {
+		return ataque;
 	}
 
 	public List<Guerreros> getGuerreros() {
 		return guerreros;
 	}
 
-	public void setGuerreros(List<Guerreros> guerreros) {
-		this.guerreros = guerreros;
-	}
+
 
 	@Override
 	public String toString() {

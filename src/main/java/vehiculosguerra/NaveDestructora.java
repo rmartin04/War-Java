@@ -26,10 +26,6 @@ public class NaveDestructora extends VehiculoGuerra {
 		return velocidad;
 	}
 
-	public void setVelocidad(double velocidad) {
-		this.velocidad = velocidad;
-	}
-
 	@Override
 	public String toString() {
 		super.toString();
