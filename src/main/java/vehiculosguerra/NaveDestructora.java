@@ -32,7 +32,7 @@ public class NaveDestructora extends VehiculoGuerra {
 
 	@Override
 	public String toString() {
-		return "NaveDestructora [velocidad=" + velocidad + "]";
+		return "NaveDestructora velocidad=" + velocidad + "]";
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package pruebajuego;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,12 +28,16 @@ public class PruebaWarJava {
 
 		Tanque tanque = prueba.crearTanque(listadoGuerreros);
 		System.out.println(tanque);
+		NaveDestructora nave = null;
 		try {
-			NaveDestructora nave = prueba.crearNave(listadoGuerreros);
+			 nave = prueba.crearNave(listadoGuerreros);
 			System.out.println(nave);
 		} catch (EmbarcarExcepcion e) {
 			logger.error(e.getMessage());
 		}
+		System.out.println("===================================\n");
+	    System.out.println( nave.toString());
+		prueba.simularLucha(tanque, nave);
 
 	}
 
@@ -109,8 +114,34 @@ public class PruebaWarJava {
 		if (alienigenas.size() > 10) {
 			throw new EmbarcarExcepcion("La nave no puede embarcar más de 10 guerreros.");
 		}
+		
 		NaveDestructora nave = new NaveDestructora(1000, "Nave de Guerra", "Acorazado", alienigenas);
 
 		return nave;
 	}
-}
+	
+	 public void simularLucha(Tanque tanque, NaveDestructora naveAlienigena) {
+		    Random random = new Random();
+
+		    while (tanque.getResistencia() > 0 && naveAlienigena.getResistencia() > 0) {
+		        int ataqueTanque = random.nextInt(100) + tanque.getAtaque();
+		        int defensaNave = random.nextInt(100) + naveAlienigena.getResistencia();
+
+		        if (ataqueTanque > defensaNave) {
+		            naveAlienigena.setResistencia(naveAlienigena.getResistencia() - ataqueTanque);
+		            System.out.println("El tanque " + tanque.getNombre() + " ha atacado a la nave alienígena " + naveAlienigena.getNombre());
+		        } else {
+		            tanque.setResistencia(tanque.getResistencia() - defensaNave);
+		            System.out.println("La nave alienígena " + naveAlienigena.getNombre() + " ha atacado al tanque " + tanque.getNombre());
+		        }
+		    }
+
+		    if (tanque.getResistencia() <= 0) {
+		        System.out.println("¡La nave alienígena ha ganado la batalla!");
+		    } else {
+		        System.out.println("¡El tanque ha ganado la batalla!");
+		    }
+		}
+	}
+	
+
