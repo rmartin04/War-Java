@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import excepciones.juego.war.EmbarcarExcepcion;
 import excepciones.juego.war.FuerzaExcepcion;
+import excepciones.juego.war.Utilidades;
 import guerreros.Guerreros;
 import guerreros.Humanos;
 import vehiculosguerra.NaveDestructora;
@@ -106,6 +107,13 @@ public class PruebaWarJava {
 		return nave;
 	}
 
+	/**
+	 * metodo que simula una lucha entre un tanque y una nave
+	 * 
+	 * @param tanque
+	 * @param naveAlienigena
+	 */
+
 	public void simularLucha(Tanque tanque, NaveDestructora naveAlienigena) {
 	
 		while (tanque.getResistencia() > 0 && naveAlienigena.getResistencia() > 0) {
@@ -147,6 +155,42 @@ public class PruebaWarJava {
 				break;
 			}
 		}
+	}
+
+	/**
+	 * metodo que crea un tanque a partir de una lista de guerreros
+	 * 
+	 * @param guerreros
+	 * @return Tanque devuelve un tanque con una lista de guerreros
+	 */
+	private Tanque crearTanqueUsuario(List<Guerreros>humanos) {
+		
+		int vida = Utilidades.pideDatoNumerico("Vida del tanque: ");
+	    
+	    String nombre = Utilidades.pideDatoCadena("Nombre del tanque: ");
+	   
+	    String tipo = Utilidades.pideDatoCadena("Tipo del tanque: ");
+	 
+	    int caniones = Utilidades.pideDatoNumerico("Numero de cañones del tanque: ");
+	    
+
+	    return new Tanque(vida, nombre, tipo, caniones, humanos);
+	}
+
+	/**
+	 * metodo que crea una nave a partir de una lista de guerreros
+	 * 
+	 * @param guerreros
+	 * @return
+	 * @throws EmbarcarExcepcion
+	 */
+
+	private NaveDestructora crearNaveUsuario(List<Guerreros> alienigenas) {
+	    int vida = Utilidades.pideDatoNumerico("Vida de la nave: ");
+	    String nombre = Utilidades.pideDatoCadena("Nombre de la nave: ");
+	    String tipo = Utilidades.pideDatoCadena("Tipo de la nave: ");
+	    double velocidad  = Utilidades.pideDatoDouble("Velocidad de la nave: ");
+	    return new NaveDestructora(vida, nombre, tipo, alienigenas, velocidad);
 	}
 	
 }
