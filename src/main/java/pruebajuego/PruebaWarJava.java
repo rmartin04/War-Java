@@ -22,11 +22,13 @@ public class PruebaWarJava {
 	public static void main(String[] args) throws FuerzaExcepcion {
 
 		PruebaWarJava prueba = new PruebaWarJava();
-		System.out.println("Bienvenido a la guerra de los mundos");
-		System.out.println("Vamos a crear una lista de guerreros, para ello debes llamar al método crearGuerreros, tanto alienígenas como humanos");
-		System.out.println("Vamos a crear un tanque y una nave destructora, para ello debes llamar a los métodos de creación, pasandole una lista de guerreros");
-		System.out.println("Vamos a simular una lucha entre el tanque y la nave destructora, para ello debes llamar al método simularLucha");
-		System.out.println("Buena suerte en la batalla");
+		/* 
+		Bienvenido a la guerra de los mundos
+		"Vamos a crear una lista de guerreros, para ello debes llamar al método crearGuerreros, tanto alienígenas como humanos"
+		"Vamos a crear un tanque y una nave destructora, para ello debes llamar a los métodos de creación, pasandole una lista de guerreros"
+		"Vamos a simular una lucha entre el tanque y la nave destructora, para ello debes llamar al método simularLucha"
+		"Buena suerte en la batalla" 
+		*/
 		
 		prueba.crearTanqueUsuario(prueba.crearGuerreros(10));
 
