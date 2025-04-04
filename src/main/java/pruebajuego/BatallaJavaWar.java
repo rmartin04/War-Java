@@ -75,7 +75,7 @@ public class BatallaJavaWar {
                 int defensaNave = barco.defender(danioTanque);
 
                 logger.info("\n***Turno " + tanque.getNombre() + " Ataca***");
-                logger.info("Daño del tanque: " + danioTanque + " | Defensa de la nave alienígena: " + defensaNave);
+                logger.info("Daño del tanque: " + danioTanque + " | Defensa de la "+barco.getNombre()+": " + defensaNave);
 
                 if (danioTanque > defensaNave) {
                     int danoReal = danioTanque - defensaNave;
@@ -83,15 +83,15 @@ public class BatallaJavaWar {
                     barco.setResistencia(barco.getResistencia() - danoReal);
                     int resistenciaDespues = barco.getResistencia();
 
-                    logger.info("\t¡Impacto! El " + tanque.getNombre() + " ha hecho " + danoReal + " puntos de daño a la nave alienígena.");
-                    logger.info("\tResistencia de la nave antes del ataque: " + resistenciaAntes + " | Resistencia de la nave después del ataque: " + resistenciaDespues);
+                    logger.info("\t¡Impacto! El " + tanque.getNombre() + " ha hecho " + danoReal + " puntos de daño a la "+barco.getNombre()+".");
+                    logger.info("\tResistencia de la "+barco.getNombre()+" antes del ataque: " + resistenciaAntes + " | Resistencia de la "+barco.getNombre()+" después del ataque: " + resistenciaDespues);
                 } else {
-                    logger.info("\tEl " + tanque.getNombre() + " ha atacado, pero la nave alienígena ha defendido todo el daño.");
+                    logger.info("\tEl " + tanque.getNombre() + " ha atacado, pero "+barco.getNombre()+" ha defendido todo el daño.");
                 }
 
                 // Verificamos si el barco ha caído
                 if (barco.getResistencia() <= 0) {
-                    logger.info("\t¡La nave alienígena ha sido destruida! El tanque ha ganado la batalla.");
+                    logger.info("\t¡La "+barco.getNombre()+" ha sido destruida! El tanque ha ganado la batalla.");
                     break;
                 }
 
@@ -100,7 +100,7 @@ public class BatallaJavaWar {
                 int defensaTanque = tanque.defender(danioNave);
 
                 logger.info("\n***Turno " + barco.getNombre() + " Ataca***");
-                logger.info("Daño de la nave alienígena: " + danioNave + " | Defensa del tanque: " + defensaTanque);
+                logger.info("Daño de la "+barco.getNombre()+": " + danioNave + " | Defensa del tanque: " + defensaTanque);
 
                 if (danioNave > defensaTanque) {
                     int danoReal = danioNave - defensaTanque;
@@ -111,12 +111,12 @@ public class BatallaJavaWar {
                     logger.info("\t¡Impacto! La nave alienígena ha hecho " + danoReal + " puntos de daño al tanque.");
                     logger.info("\tResistencia del tanque antes del ataque: " + resistenciaAntes + " | Resistencia del tanque después del ataque: " + resistenciaDespues);
                 } else {
-                    logger.info("\tLa nave alienígena ha atacado, pero el tanque ha defendido todo el daño.");
+                    logger.info("\tLa "+barco.getNombre()+" ha atacado, pero el tanque ha defendido todo el daño.");
                 }
 
                 // Verificamos si el tanque ha caído
                 if (tanque.getResistencia() <= 0) {
-                    logger.info("\t¡El tanque ha sido destruido! La nave alienígena ha ganado la batalla.");
+                    logger.info("\t¡El tanque ha sido destruido! La "+barco.getNombre()+" ha ganado la batalla.");
                     break;
                 }
             }
